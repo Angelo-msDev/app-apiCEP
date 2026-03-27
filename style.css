@@ -55,6 +55,13 @@ label {
     font-size: 0.85rem;
 }
 
+/* 4. Campo de Busca (CEP + Botão) */
+.search-box {
+    display: flex;
+    gap: 10px;
+    align-items: stretch; /* Garante que input e botão tenham a mesma altura */
+    margin-bottom: 1rem;
+}
 
 /* 5. Inputs e Botões */
 input {
