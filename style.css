@@ -138,10 +138,10 @@ button:active {
 }
 
 /* Ajuste para telas curtas (Paisagem/Landscape) */
-@media (max-height: 550px) {
+/*@media (max-height: 550px) {
     body {
         align-items: flex-start;
         padding-top: 2rem;
         padding-bottom: 2rem;
-    }
+    }*/
 }
