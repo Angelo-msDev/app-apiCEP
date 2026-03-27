@@ -85,9 +85,9 @@ label {
         font-size: 1.5rem; /* Diminui um pouco o título */
     }
 
-    .search-box {
+    /*.search-box {
         flex-direction: column; /* Empilha input e botão se o espaço for muito curto */
-    }
+    }*/
 }
 
 /* Ajuste para telas muito curtas na vertical (ex: celular em modo paisagem) */
