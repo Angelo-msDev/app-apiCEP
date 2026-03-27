@@ -1,56 +1,95 @@
-const btnBuscar = document.getElementById('btnBuscar');
-const cepInput = document.getElementById('cep');
-const msg = document.getElementById('mensagem');
+const formularioCep = document.getElementById("cep-form");
+const campoCep = document.getElementById("cep");
+const textoStatus = document.getElementById("cep-status");
+const areaResultado = document.getElementById("cep-result");
 
-// Função principal de busca
-async function buscarCEP() {
-    const cep = cepInput.value.replace(/\D/g, '');
-    msg.style.display = 'none';
+function mostrarStatus(mensagem, tipo) {
+  textoStatus.textContent = mensagem;
+  textoStatus.classList.remove("ok", "error");
 
-    if (cep.length !== 8) {
-        alert("Por favor, digite um CEP válido com 8 dígitos.");
-        return;
+  if (tipo) {
+    textoStatus.classList.add(tipo);
+  }
+}
+
+function cepValido(cep) {
+  return /^\d{8}$/.test(cep);
+}
+
+function limparResultado() {
+  areaResultado.innerHTML = "";
+}
+
+function montarResultado(dados) {
+  const pares = [
+    ["CEP", dados.cep],
+    ["Logradouro", dados.logradouro],
+    ["Complemento", dados.complemento],
+    ["Bairro", dados.bairro],
+    ["Cidade", dados.localidade],
+    ["UF", dados.uf],
+    ["Estado", dados.estado],
+    ["DDD", dados.ddd]
+  ];
+
+  let html = "<div class='result-grid'>";
+
+  for (let i = 0; i < pares.length; i += 1) {
+    const chave = pares[i][0];
+    const valor = pares[i][1] && String(pares[i][1]).trim() ? pares[i][1] : "-";
+
+    html += "<article class='result-item'>";
+    html += `<div class='label'>${chave}</div>`;
+    html += `<div class='value'>${valor}</div>`;
+    html += "</article>";
+  }
+
+  html += "</div>";
+  return html;
+}
+
+async function buscarCep(cep) {
+  const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+
+  if (!resposta.ok) {
+    if (resposta.status === 400) {
+      throw new Error("CEP em formato invalido.");
     }
 
-    try {
-        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-        const data = await response.json();
+    throw new Error("Erro na requisicao.");
+  }
 
-        if (data.erro) {
-            msg.style.display = 'block';
-            limparCampos();
-        } else {
-            preencherCampos(data);
-        }
-    } catch (error) {
-        console.error("Erro na busca:", error);
-        alert("Não foi possível conectar ao serviço.");
+  return resposta.json();
+}
+
+formularioCep.addEventListener("submit", async function (evento) {
+  evento.preventDefault();
+
+  const cepDigitado = campoCep.value.replace(/\D/g, "");
+  limparResultado();
+
+  if (!cepValido(cepDigitado)) {
+    mostrarStatus("Digite um CEP com 8 numeros.", "error");
+    return;
+  }
+
+  mostrarStatus("Consultando CEP...", null);
+
+  try {
+    const dados = await buscarCep(cepDigitado);
+
+    if (dados.erro) {
+      mostrarStatus("CEP nao encontrado.", "error");
+      return;
     }
-}
 
-function preencherCampos(dados) {
-    document.getElementById('logradouro').value = dados.logradouro;
-    document.getElementById('bairro').value = dados.bairro;
-    document.getElementById('localidade').value = `${dados.localidade} - ${dados.uf}`;
-}
-
-function limparCampos() {
-    document.getElementById('logradouro').value = '';
-    document.getElementById('bairro').value = '';
-    document.getElementById('localidade').value = '';
-}
-
-// Evento de clique no botão
-btnBuscar.addEventListener('click', buscarCEP);
-
-// Atalho: Buscar ao apertar "Enter" no teclado
-cepInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') buscarCEP();
+    mostrarStatus("Consulta feita com sucesso.", "ok");
+    areaResultado.innerHTML = montarResultado(dados);
+  } catch (erro) {
+    mostrarStatus(erro.message || "Nao foi possivel consultar.", "error");
+  }
 });
 
-// Máscara visual do CEP (00000-000)
-cepInput.addEventListener('input', (e) => {
-    let v = e.target.value.replace(/\D/g, '');
-    if (v.length > 5) v = v.replace(/^(\d{5})(\d)/, '$1-$2');
-    e.target.value = v;
+campoCep.addEventListener("input", function () {
+  campoCep.value = campoCep.value.replace(/\D/g, "");
 });
