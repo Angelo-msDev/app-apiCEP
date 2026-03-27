@@ -122,7 +122,7 @@ button:active {
 /* --- 6. RESPONSIVIDADE (@media) --- */
 
 /* Celulares (abaixo de 480px) */
-@media (max-width: 480px) {
+/*@media (max-width: 480px) {
     .container {
         padding: 1.5rem;
     }
@@ -131,13 +131,13 @@ button:active {
         flex-direction: column; /* Em telas muito pequenas, empilha para não apertar */
     }
 
-    button {
+    /*button {
         padding: 0.8rem; /* No mobile, o botão fica mais alto para toque */
-        width: 100%;
+     /*   width: 100%;
     }
 }
 
-/* Ajuste para telas curtas (Paisagem/Landscape) */
+ Ajuste para telas curtas (Paisagem/Landscape) */
 /*@media (max-height: 550px) {
     body {
         align-items: flex-start;
