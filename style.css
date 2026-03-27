@@ -1,147 +1,104 @@
+/* Definição de variáveis para cores: facilita trocar o tema do site em um só lugar */
 :root {
-    --primary: #4f46e5;
-    --primary-hover: #4338ca;
-    --bg: #f8fafc;
-    --text: #1e293b;
-    --text-light: #64748b;
-    --error: #ef4444;
-    --border: #cbd5e1;
+    --primary: #4f46e5;       /* Azul principal */
+    --primary-hover: #4338ca; /* Azul mais escuro para o efeito de passar o mouse */
+    --bg: #f8fafc;            /* Cinza bem claro para o fundo da página */
+    --text: #1e293b;          /* Azul escuro quase preto para os textos */
+    --border: #cbd5e1;        /* Cor das bordas dos inputs */
+    --error: #ef4444;         /* Vermelho para mensagens de erro */
 }
 
-/* 1. Reset e Estrutura Base */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* Reset básico: remove margens e preenchimentos padrão do navegador */
+* { 
+    box-sizing: border-box; /* Garante que padding e bordas não aumentem o tamanho total do elemento */
+    margin: 0; 
+    padding: 0; 
 }
 
+/* Estilização do corpo da página */
 body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    font-family: system-ui, sans-serif; /* Fonte moderna e padrão do sistema */
+    background: var(--bg);              /* Aplica a cor de fundo definida no :root */
+    color: var(--text);                 /* Aplica a cor do texto */
+    display: grid;                      /* Ativa o modo Grid */
+    place-items: center;                /* Atalho para centralizar o conteúdo vertical e horizontalmente */
+    min-height: 100vh;                  /* Garante que o corpo ocupe toda a altura da tela */
+    padding: 20px;                      /* Evita que o card encoste nas bordas em telas pequenas */
 }
 
-/* 2. Container Principal */
+/* Cartão que envolve o formulário */
 .container {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 420px;
+    background: white;                  /* Fundo branco para o card */
+    padding: 2rem;                      /* Espaçamento interno generoso */
+    border-radius: 12px;                /* Cantos arredondados */
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1); /* Sombra suave para dar profundidade */
+    width: 100%;                        /* Ocupa toda a largura disponível... */
+    max-width: 400px;                   /* ...até o limite de 400px */
 }
 
+/* Container dos campos: organiza o fluxo vertical */
+.form-content {
+    display: flex;                      /* Ativa o Flexbox */
+    flex-direction: column;             /* Empilha os elementos um em cima do outro */
+    gap: 12px;                          /* Cria um espaço uniforme de 12px entre cada item */
+}
+
+/* Título principal */
 h2 { 
-    text-align: center; 
-    color: var(--primary); 
-    margin-bottom: 1.5rem; 
-    font-size: 1.5rem;
+    text-align: center;                 /* Centraliza o texto */
+    color: var(--primary);              /* Aplica o azul principal */
+    margin-bottom: 8px;                 /* Espaço extra abaixo do título */
 }
 
-/* 3. Grupos de Formulário */
-.form-group { 
-    margin-bottom: 1.2rem; 
-}
-
+/* Rótulos dos campos */
 label { 
-    display: block; 
-    margin-bottom: 0.5rem; 
-    font-weight: 600; 
-    font-size: 0.85rem;
+    font-weight: 600;                   /* Deixa o texto em negrito médio */
+    font-size: 0.85rem;                 /* Diminui um pouco o tamanho da fonte */
+    margin-bottom: -4px;                /* Puxa o input para mais perto do label */
 }
 
-/* 4. Campo de Busca (CEP + Botão) */
-.search-box, button {
-    display: flex;
-    gap: 10px;
-    align-items: stretch; /* Garante que input e botão tenham a mesma altura */
-    margin-bottom: 1rem;
-}
-
-/* 5. Inputs e Botões */
+/* Campos de entrada de texto */
 input {
-    flex: 1;
-    padding: 0.8rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.2s;
-    width: 100%;
+    padding: 12px;                      /* Espaço interno para o texto não encostar nas bordas */
+    border: 1px solid var(--border);    /* Borda fina e clara */
+    border-radius: 8px;                 /* Cantos levemente arredondados */
+    font-size: 1rem;                    /* Tamanho de fonte confortável para leitura */
+    outline-color: var(--primary);      /* Cor da borda quando o usuário clica para digitar */
 }
 
-input:focus {
-    outline: none;
-    border-color: var(--primary);
+/* Estilo para campos que não podem ser editados (ex: Rua, Bairro) */
+input[readonly] {
+    background: #f1f5f9;                /* Fundo cinza para indicar que está desativado */
+    color: #64748b;                     /* Texto mais claro (cor de "desabilitado") */
+    cursor: not-allowed;                /* Muda o cursor do mouse para um sinal de "proibido" */
 }
 
-.button {
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: 0 1.5rem; /* O preenchimento lateral define a largura */
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: background 0.2s, transform 0.1s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap; /* Impede que o texto "Buscar" quebre linha */
+/* Botão de busca */
+button {
+    background: var(--primary);         /* Fundo azul */
+    color: white;                       /* Texto branco */
+    border: none;                       /* Remove a borda padrão */
+    padding: 14px;                      /* Botão alto, fácil de clicar no celular */
+    border-radius: 8px;                 /* Arredondamento igual aos inputs */
+    font-weight: 600;                   /* Texto em negrito */
+    cursor: pointer;                    /* Muda o cursor para a "mãozinha" */
+    transition: 0.2s;                   /* Deixa as mudanças de cor e escala mais suaves */
+    margin-top: 8px;                    /* Dá um destaque maior separando o botão dos campos */
 }
 
-.button:hover { 
-    background-color: var(--primary-hover); 
+/* Efeito ao passar o mouse no botão */
+button:hover { 
+    background: var(--primary-hover);   /* Escurece o azul */
 }
 
-.button:active {
-    transform: scale(0.98);
+/* Efeito de clique no botão */
+button:active { 
+    transform: scale(0.98);             /* Diminui levemente o tamanho, simulando um clique físico */
 }
 
-/* Estilo para campos que são apenas leitura */
-.readonly { 
-    background-color: #f1f5f9; 
-    color: var(--text-light); 
-    cursor: not-allowed; 
-}
-
-/* Mensagens de Erro */
+/* Mensagem de erro ou aviso */
 #mensagem {
-    font-size: 0.85rem;
-    color: var(--error);
-    margin-bottom: 1rem;
-    display: none;
-    text-align: center;
-}
-
-/* --- 6. RESPONSIVIDADE (@media) --- */
-
-/* Celulares (abaixo de 480px) */
-@media (max-width: 480px) {
-    .container {
-        padding: 1.5rem;
-    }
-
-    .search-box {
-        flex-direction: column; /* Em telas muito pequenas, empilha para não apertar */
-    }
-
-    button {
-        padding: 0.8rem; /* No mobile, o botão fica mais alto para toque */
-        width: 100%;
-    }
-}
-
- /*Ajuste para telas curtas (Paisagem/Landscape) */
-@media (max-height: 550px) {
-    body {
-        align-items: flex-start;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
+    color: var(--error);                /* Texto vermelho */
+    font-size: 0.85rem;                 /* Fonte menor */
+    text-align: center;                 /* Centraliza o aviso */
 }
