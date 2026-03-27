@@ -1,104 +1,203 @@
-/* Definição de variáveis para cores: facilita trocar o tema do site em um só lugar */
 :root {
-    --primary: #4f46e5;       /* Azul principal */
-    --primary-hover: #4338ca; /* Azul mais escuro para o efeito de passar o mouse */
-    --bg: #f8fafc;            /* Cinza bem claro para o fundo da página */
-    --text: #1e293b;          /* Azul escuro quase preto para os textos */
-    --border: #cbd5e1;        /* Cor das bordas dos inputs */
-    --error: #ef4444;         /* Vermelho para mensagens de erro */
+  --bg-1: #f7f7f7;
+  --bg-2: #e8e8e8;
+  --ink: #1d1d1f;
+  --muted: #5d5348;
+  --card: #ffffff;
+  --stroke: rgba(124, 83, 42, 0.2);
+  --accent: #0c66e4;
+  --accent-2: #0550ae;
+  --ok: #1d7f42;
+  --error: #b42318;
+  --shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* Reset básico: remove margens e preenchimentos padrão do navegador */
-* { 
-    box-sizing: border-box; /* Garante que padding e bordas não aumentem o tamanho total do elemento */
-    margin: 0; 
-    padding: 0; 
+* {
+  box-sizing: border-box;
 }
 
-/* Estilização do corpo da página */
 body {
-    font-family: system-ui, sans-serif; /* Fonte moderna e padrão do sistema */
-    background: var(--bg);              /* Aplica a cor de fundo definida no :root */
-    color: var(--text);                 /* Aplica a cor do texto */
-    display: grid;                      /* Ativa o modo Grid */
-    place-items: center;                /* Atalho para centralizar o conteúdo vertical e horizontalmente */
-    min-height: 100vh;                  /* Garante que o corpo ocupe toda a altura da tela */
-    padding: 20px;                      /* Evita que o card encoste nas bordas em telas pequenas */
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  padding: 24px;
 }
 
-/* Cartão que envolve o formulário */
-.container {
-    background: white;                  /* Fundo branco para o card */
-    padding: 2rem;                      /* Espaçamento interno generoso */
-    border-radius: 12px;                /* Cantos arredondados */
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1); /* Sombra suave para dar profundidade */
-    width: 100%;                        /* Ocupa toda a largura disponível... */
-    max-width: 400px;                   /* ...até o limite de 400px */
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
 }
 
-/* Container dos campos: organiza o fluxo vertical */
-.form-content {
-    display: flex;                      /* Ativa o Flexbox */
-    flex-direction: column;             /* Empilha os elementos um em cima do outro */
-    gap: 12px;                          /* Cria um espaço uniforme de 12px entre cada item */
+.hero {
+  background: #ffffff;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: var(--shadow);
 }
 
-/* Título principal */
-h2 { 
-    text-align: center;                 /* Centraliza o texto */
-    color: var(--primary);              /* Aplica o azul principal */
-    margin-bottom: 8px;                 /* Espaço extra abaixo do título */
+.kicker {
+  margin: 0;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.75rem;
 }
 
-/* Rótulos dos campos */
-label { 
-    font-weight: 600;                   /* Deixa o texto em negrito médio */
-    font-size: 0.85rem;                 /* Diminui um pouco o tamanho da fonte */
-    margin-bottom: -4px;                /* Puxa o input para mais perto do label */
+h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  line-height: 1.1;
 }
 
-/* Campos de entrada de texto */
-input {
-    padding: 12px;                      /* Espaço interno para o texto não encostar nas bordas */
-    border: 1px solid var(--border);    /* Borda fina e clara */
-    border-radius: 8px;                 /* Cantos levemente arredondados */
-    font-size: 1rem;                    /* Tamanho de fonte confortável para leitura */
-    outline-color: var(--primary);      /* Cor da borda quando o usuário clica para digitar */
+.subtitle {
+  margin: 0;
+  color: var(--muted);
 }
 
-/* Estilo para campos que não podem ser editados (ex: Rua, Bairro) */
-input[readonly] {
-    background: #f1f5f9;                /* Fundo cinza para indicar que está desativado */
-    color: #64748b;                     /* Texto mais claro (cor de "desabilitado") */
-    cursor: not-allowed;                /* Muda o cursor do mouse para um sinal de "proibido" */
+.card {
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: var(--shadow);
 }
 
-/* Botão de busca */
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 1.25rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+input,
 button {
-    background: var(--primary);         /* Fundo azul */
-    color: white;                       /* Texto branco */
-    border: none;                       /* Remove a borda padrão */
-    padding: 14px;                      /* Botão alto, fácil de clicar no celular */
-    border-radius: 8px;                 /* Arredondamento igual aos inputs */
-    font-weight: 600;                   /* Texto em negrito */
-    cursor: pointer;                    /* Muda o cursor para a "mãozinha" */
-    transition: 0.2s;                   /* Deixa as mudanças de cor e escala mais suaves */
-    margin-top: 8px;                    /* Dá um destaque maior separando o botão dos campos */
+  font: inherit;
 }
 
-/* Efeito ao passar o mouse no botão */
-button:hover { 
-    background: var(--primary-hover);   /* Escurece o azul */
+input {
+  width: 100%;
+  border: 1px solid #d9c4aa;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #fffdfb;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Efeito de clique no botão */
-button:active { 
-    transform: scale(0.98);             /* Diminui levemente o tamanho, simulando um clique físico */
+input:focus {
+  outline: none;
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 4px rgba(255, 138, 0, 0.18);
 }
 
-/* Mensagem de erro ou aviso */
-#mensagem {
-    color: var(--error);                /* Texto vermelho */
-    font-size: 0.85rem;                 /* Fonte menor */
-    text-align: center;                 /* Centraliza o aviso */
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.wide {
+  margin-top: 6px;
+}
+
+.hint {
+  color: var(--muted);
+}
+
+.status {
+  min-height: 24px;
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+.status.ok {
+  color: var(--ok);
+}
+
+.status.error {
+  color: var(--error);
+}
+
+.result {
+  margin-top: 8px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.result-item {
+  background: #fffaf4;
+  border: 1px solid #efdfcd;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.result-item .label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #916f4c;
+  margin-bottom: 5px;
+}
+
+.result-item .value {
+  font-weight: 700;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 14px;
+  }
+
+  .hero,
+  .card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    width: 100%;
+  }
 }
