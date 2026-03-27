@@ -89,7 +89,8 @@ label {
     }
 
     button {
-        width: 100%; /* Botão ocupa a largura total no mobile */
+        gap: 8px;
+        width: 50%; /* Botão ocupa a largura total no mobile */
     }
 }
 
