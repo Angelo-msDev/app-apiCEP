@@ -3,94 +3,145 @@
     --primary-hover: #4338ca;
     --bg: #f8fafc;
     --text: #1e293b;
+    --text-light: #64748b;
     --error: #ef4444;
+    --border: #cbd5e1;
+}
+
+/* 1. Reset e Estrutura Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Segoe UI', system-ui, sans-serif;
     background-color: var(--bg);
-    margin: 0;
+    color: var(--text);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
+/* 2. Container Principal */
 .container {
     background: white;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    width: 90%;
+    width: 100%;
     max-width: 420px;
 }
 
-h2 { text-align: center; color: var(--primary); margin-bottom: 1.5rem; }
-
-.search-box {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 1rem;
+h2 { 
+    text-align: center; 
+    color: var(--primary); 
+    margin-bottom: 1.5rem; 
+    font-size: 1.5rem;
 }
 
-input {
-    flex: 1;
-    padding: 0.8rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 1rem;
+/* 3. Grupos de Formulário */
+.form-group { 
+    margin-bottom: 1.2rem; 
 }
-
-button {
-    height: 20px;
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: 0 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.2s;
-}
-
-button:hover { background-color: var(--primary-hover); }
-
-.form-group { margin-bottom: 1rem; }
 
 label { 
     display: block; 
-    margin-bottom: 0.4rem; 
+    margin-bottom: 0.5rem; 
     font-weight: 600; 
     font-size: 0.85rem;
 }
 
-.readonly { background-color: #f1f5f9; color: #64748b; cursor: not-allowed; }
+/* 4. Campo de Busca (CEP + Botão) */
+.search-box {
+    display: flex;
+    gap: 10px;
+    align-items: stretch; /* Garante que input e botão tenham a mesma altura */
+    margin-bottom: 1rem;
+}
 
+/* 5. Inputs e Botões */
+input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0 1.5rem; /* O preenchimento lateral define a largura */
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* Impede que o texto "Buscar" quebre linha */
+}
+
+button:hover { 
+    background-color: var(--primary-hover); 
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Estilo para campos que são apenas leitura */
+.readonly { 
+    background-color: #f1f5f9; 
+    color: var(--text-light); 
+    cursor: not-allowed; 
+}
+
+/* Mensagens de Erro */
 #mensagem {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--error);
     margin-bottom: 1rem;
     display: none;
+    text-align: center;
 }
 
-/* --- REGRAS DE RESPONSIVIDADE (@media) --- */
+/* --- 6. RESPONSIVIDADE (@media) --- */
 
-/* Celulares Pequenos (abaixo de 480px) */
+/* Celulares (abaixo de 480px) */
 @media (max-width: 480px) {
     .container {
-        margin: 20px;
-        padding: 1.5rem; /* Reduz o espaçamento interno */
+        padding: 1.5rem;
     }
 
-    h2 {
-        font-size: 1.5rem; /* Diminui um pouco o título */
+    .search-box {
+        flex-direction: column; /* Em telas muito pequenas, empilha para não apertar */
+    }
+
+    button {
+        padding: 0.8rem; /* No mobile, o botão fica mais alto para toque */
+        width: 100%;
     }
 }
 
-/* Ajuste para telas muito curtas na vertical (ex: celular em modo paisagem) */
-@media (max-height: 500px) {
+/* Ajuste para telas curtas (Paisagem/Landscape) */
+@media (max-height: 550px) {
     body {
-        align-items: flex-start; /* Alinha no topo para não sumir conteúdo */
+        align-items: flex-start;
         padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 }
