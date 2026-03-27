@@ -71,3 +71,32 @@ label {
     margin-bottom: 1rem;
     display: none;
 }
+
+/* --- REGRAS DE RESPONSIVIDADE (@media) --- */
+
+/* Celulares Pequenos (abaixo de 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem; /* Reduz o espaçamento interno */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Diminui um pouco o título */
+    }
+
+    .search-box {
+        flex-direction: column; /* Empilha input e botão se o espaço for muito curto */
+    }
+
+    button {
+        width: 100%; /* Botão ocupa a largura total no mobile */
+    }
+}
+
+/* Ajuste para telas muito curtas na vertical (ex: celular em modo paisagem) */
+@media (max-height: 500px) {
+    body {
+        align-items: flex-start; /* Alinha no topo para não sumir conteúdo */
+        padding-top: 2rem;
+    }
+}
