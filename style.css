@@ -77,6 +77,7 @@ label {
 /* Celulares Pequenos (abaixo de 480px) */
 @media (max-width: 480px) {
     .container {
+        margin: 20px;
         padding: 1.5rem; /* Reduz o espaçamento interno */
     }
 
@@ -86,11 +87,6 @@ label {
 
     .search-box {
         flex-direction: column; /* Empilha input e botão se o espaço for muito curto */
-    }
-
-    button {
-        gap: 8px;
-        width: 50%; /* Botão ocupa a largura total no mobile */
     }
 }
 
