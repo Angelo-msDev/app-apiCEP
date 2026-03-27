@@ -1,0 +1,73 @@
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg: #f8fafc;
+    --text: #1e293b;
+    --error: #ef4444;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 420px;
+}
+
+h2 { text-align: center; color: var(--primary); margin-bottom: 1.5rem; }
+
+.search-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+button:hover { background-color: var(--primary-hover); }
+
+.form-group { margin-bottom: 1rem; }
+
+label { 
+    display: block; 
+    margin-bottom: 0.4rem; 
+    font-weight: 600; 
+    font-size: 0.85rem;
+}
+
+.readonly { background-color: #f1f5f9; color: #64748b; cursor: not-allowed; }
+
+#mensagem {
+    font-size: 0.8rem;
+    color: var(--error);
+    margin-bottom: 1rem;
+    display: none;
+}
