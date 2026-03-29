@@ -40,15 +40,6 @@ body {
   box-shadow: var(--shadow);
 }
 
-.kicker {
-  margin: 0;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 800;
-  font-size: 0.75rem;
-}
-
 h1 {
   margin: 10px 0 8px;
   font-size: clamp(1.6rem, 5vw, 2.6rem);
