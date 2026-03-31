@@ -85,8 +85,15 @@ formularioCep.addEventListener("submit", async function (evento) {
   try {
     const dados = await buscarCep(cepDigitado);
 
+  /*  if (dados.erro) {
+      mostrarStatus("CEP nao encontrado.", "error");
+      return;
+    }*/
+
     if (dados.erro) {
       mostrarStatus("CEP nao encontrado.", "error");
+      // ADICIONE ISSO AQUI:
+      if ("vibrate" in navigator) navigator.vibrate([100, 50, 100]);
       return;
     }
 
