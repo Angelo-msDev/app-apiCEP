@@ -104,6 +104,27 @@ formularioCep.addEventListener("submit", async function (evento) {
   }
 });
 
+// EVENTO DE CLIQUE NO BOTÃO DE COMPARTILHAR
+btnShare.addEventListener("click", async () => {
+  if (dadosGlobais) {
+    const textoParaCompartilhar = `📍 Endereço Encontrado:\n\n` +
+      `CEP: ${dadosGlobais.cep}\n` +
+      `Logradouro: ${dadosGlobais.logradouro}\n` +
+      `Bairro: ${dadosGlobais.bairro}\n` +
+      `Cidade: ${dadosGlobais.localidade} - ${dadosGlobais.uf}`;
+
+    try {
+      await navigator.share({
+        title: 'Consulta de CEP - Angelo',
+        text: textoParaCompartilhar,
+        url: window.location.href
+      });
+    } catch (err) {
+      console.log('Compartilhamento cancelado.');
+    }
+  }
+});
+
 campoCep.addEventListener("input", function () {
   campoCep.value = campoCep.value.replace(/\D/g, "");
 });
