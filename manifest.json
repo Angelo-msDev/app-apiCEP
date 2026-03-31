@@ -41,7 +41,7 @@
     },
     {
       "src": "screenshot-desktop.png",
-      "sizes": "1920x1080",
+      "sizes": "1919x939",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Interface intuitiva para desktop"
