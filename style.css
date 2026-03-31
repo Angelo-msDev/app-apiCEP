@@ -218,9 +218,9 @@ button.wide {
   
   /* Ajuste opcional para o botão flutuante em telas pequenas */
   #btn-share {
-    bottom: 16px;
+    bottom: 10px;
     right: 16px;
-    width: 52px;
-    height: 52px;
+    width: 60px;
+    height: 60px;
   }
 }
