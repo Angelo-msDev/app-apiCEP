@@ -124,7 +124,9 @@ button:active {
 /* --- CONFIGURAÇÃO ESPECÍFICA DO BOTÃO FLUTUANTE (FAB) --- */
 #btn-share {
   display: none; /* Controlado pelo JavaScript */
-  /*position: fixed;*/
+  position: fixed;
+  justify-content: center;
+  align-items: center;
   bottom: 35px;
   right: 35px;
   z-index: 1000;
