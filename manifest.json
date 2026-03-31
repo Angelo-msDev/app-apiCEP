@@ -32,20 +32,5 @@
     "standalone"
   ]
   
-  "screenshots": [
-  {
-    "src": "screenshot-mobile.png",
-    "sizes": "1080x1920",
-    "type": "image/png",
-    "form_factor": "narrow",
-    "label": "Busca de CEP rápida no celular"
-  },
-  {
-    "src": "screenshot-desktop.png",
-    "sizes": "1920x1080",
-    "type": "image/png",
-    "form_factor": "wide",
-    "label": "Interface intuitiva para desktop"
-  }
-]
+
 }
