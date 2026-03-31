@@ -34,7 +34,7 @@
   "screenshots": [
     {
       "src": "screenshot-mobile.png",
-      "sizes": "1080x1920",
+      "sizes": "387x843",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Busca de CEP rápida no celular"
