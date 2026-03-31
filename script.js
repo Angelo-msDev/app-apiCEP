@@ -68,8 +68,15 @@ formularioCep.addEventListener("submit", async function (evento) {
   const cepDigitado = campoCep.value.replace(/\D/g, "");
   limparResultado();
 
+/*  if (!cepValido(cepDigitado)) {
+    mostrarStatus("Digite um CEP com 8 numeros.", "error");
+    return;
+  }*/
+
   if (!cepValido(cepDigitado)) {
     mostrarStatus("Digite um CEP com 8 numeros.", "error");
+    // ADICIONE ISSO AQUI:
+    if ("vibrate" in navigator) navigator.vibrate([100, 50, 100]); 
     return;
   }
 
