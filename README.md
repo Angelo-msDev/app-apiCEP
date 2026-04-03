@@ -29,7 +29,7 @@ O Lighthouse avalia Performance, Acessibilidade, Melhores Práticas e SEO.
 
 ### PWABuilder Score
 Avaliação da conformidade do Manifesto e Service Worker para publicação em lojas (Google Play/App Store).
-![Resultado PWABuilder](Resultados_(png)ResultadoPWABuilder.png)
+![Resultado PWABuilder](Resultados_(png)/ResultadoPWABuilder.png)
 
 ---
 
