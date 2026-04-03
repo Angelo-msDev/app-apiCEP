@@ -3,6 +3,7 @@ const campoCep = document.getElementById("cep");
 const textoStatus = document.getElementById("cep-status");
 const areaResultado = document.getElementById("cep-result");
 const btnShare = document.getElementById("btn-share"); // Seleciona o botão flutuante
+const btnGeo = document.getElementById("btn-geo"); // Botão de "localização atual"
 
 let dadosGlobais = null; // Variável para armazenar os dados e compartilhar depois
 
@@ -116,7 +117,41 @@ btnShare.addEventListener("click", async () => {
     }
   }
 });
+/////////////////////////////////////////////////////////////////////////////////
+btnGeo.addEventListener("click", () => {
+  if ("geolocation" in navigator) {
+    mostrarStatus("Obtendo localização...", null);
+    
+    navigator.geolocation.getCurrentPosition(async (posicao) => {
+      const lat = posicao.coords.latitude;
+      const lon = posicao.coords.longitude;
 
+      try {
+        // API Reversa para transformar coordenadas em endereço/CEP
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+        const dados = await response.json();
+        
+        // O Nominatim retorna o CEP no campo postcoded
+        const cepEncontrado = dados.address.postcode ? dados.address.postcode.replace(/\D/g, "") : "";
+
+        if (cepEncontrado) {
+          campoCep.value = cepEncontrado;
+          mostrarStatus("Localização obtida! Clique em Buscar.", "ok");
+          if ("vibrate" in navigator) navigator.vibrate(50); // Feedback de sucesso
+        } else {
+          throw new Error("CEP não encontrado para esta posição.");
+        }
+      } catch (error) {
+        mostrarStatus("Erro ao obter CEP pela localização.", "error");
+      }
+    }, (erro) => {
+      mostrarStatus("Permissão de localização negada.", "error");
+    });
+  } else {
+    mostrarStatus("Seu navegador não suporta geolocalização.", "error");
+  }
+});
+/////////////////////////////////////////////////////////////////////////////////
 campoCep.addEventListener("input", function () {
   campoCep.value = campoCep.value.replace(/\D/g, "");
 });
