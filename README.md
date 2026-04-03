@@ -6,10 +6,8 @@ Uma aplicação web de alta performance desenvolvida para consulta de endereços
 
 ## 🚀 Demonstração
 ![Video](video_demonstração.mp4)
-<div aling=center>
-   https://github.com/user-attachments/assets/74455c44-b4c4-4c3c-bbc2-47df0272de47
 
-</div>
+   https://github.com/user-attachments/assets/74455c44-b4c4-4c3c-bbc2-47df0272de47
 
    Acesse a versão final: [https://app-api-cep.vercel.app/](https://app-api-cep.vercel.app/)
    
