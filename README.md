@@ -25,11 +25,11 @@ Abaixo estão os índices de qualidade atingidos pelo projeto:
 
 ### Lighthouse (Google Chrome)
 O Lighthouse avalia Performance, Acessibilidade, Melhores Práticas e SEO.
-![Resultado Lighthouse](caminho-da-sua-imagem-lighthouse.png)
+![Resultado Lighthouse](Resultados_(png)/ResultadoLighthouse.png)
 
 ### PWABuilder Score
 Avaliação da conformidade do Manifesto e Service Worker para publicação em lojas (Google Play/App Store).
-![Resultado PWABuilder](caminho-da-sua-imagem-pwabuilder.png)
+![Resultado PWABuilder](Resultados_(png)ResultadoPWABuilder.png)
 
 ---
 
