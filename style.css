@@ -101,16 +101,6 @@ input:focus {
   gap: 8px;
 }
 
-#btn-geo {
-  background: var(--card);
-  color: var(--accent);
-  border: 1px solid var(--stroke);
-  font-size: 1.2rem;
-  padding: 0 15px;
-}
-
-#btn-geo:hover {
-  background: var(--bg-2);
 }
 
 button {
