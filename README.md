@@ -1,38 +1,71 @@
-# 📍 App Consultar CEP
+# 📍 BuscaCEP Pro - Progressive Web App
 
-Uma aplicação web moderna e responsiva para consulta de endereços através do CEP, consumindo a API pública **ViaCEP**. O projeto foi desenvolvido para oferecer uma experiência de usuário fluida, com validações em tempo real e interface limpa.
+Uma aplicação web de alta performance desenvolvida para consulta de endereços brasileiros. Este projeto evoluiu de uma ferramenta simples para um **PWA completo**, integrando APIs de hardware e seguindo as melhores práticas de UX (User Experience) e acessibilidade.
 
 ---
 
 ## 🚀 Demonstração
-
-Acesse o projeto online: [https://app-api-cep.vercel.app/](https://app-api-cep.vercel.app/)
-
----
-
-## ✨ Funcionalidades
-
-* **Consulta Instantânea:** Busca automática de endereço ao preencher o CEP.
-* **Validação de Dados:** Impede a entrada de caracteres inválidos e verifica o formato do CEP (8 dígitos).
-* **Feedback Visual:** Avisos claros para CEPs não encontrados ou erros de digitação.
-* **Design Responsivo:** Interface adaptada para celulares, tablets e desktops.
-* **Limpeza de Formulário:** Opção para resetar os campos rapidamente para uma nova busca.
+Acesse a versão final: [https://app-api-cep.vercel.app/](https://app-api-cep.vercel.app/)
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## ✨ Funcionalidades Avançadas
 
-O projeto utiliza o "trio fundamental" do desenvolvimento web moderno:
+* **📦 PWA (Progressive Web App):** Instalável em Android, iOS e Desktop, com suporte offline via Service Workers.
+* **📍 Geolocalização Reversa:** Obtém o CEP automaticamente através do GPS do dispositivo (via API Nominatim/OpenStreetMap).
+* **📤 Web Share API:** Compartilhamento nativo do endereço encontrado para WhatsApp, E-mail e outros apps através de um botão flutuante (FAB).
+* **📳 Feedback Tátil (Vibration API):** Alertas físicos (vibração) no dispositivo para erros de validação ou CEP não encontrado.
+* **📱 Design Responsivo:** Interface moderna adaptada para todos os tamanhos de tela com foco em usabilidade mobile.
 
-* **HTML5:** Estrutura semântica.
-* **CSS3:** Estilização com foco em experiência do usuário (UX) e responsividade.
-* **JavaScript (ES6+):** Lógica de consumo de API via `Fetch`, tratamento de dados e manipulação do DOM.
-* **API ViaCEP:** Serviço de alta disponibilidade para busca de endereços brasileiros.
+---
+
+## 📊 Auditoria de Qualidade
+
+Abaixo estão os índices de qualidade atingidos pelo projeto:
+
+### Lighthouse (Google Chrome)
+O Lighthouse avalia Performance, Acessibilidade, Melhores Práticas e SEO.
+![Resultado Lighthouse](caminho-da-sua-imagem-lighthouse.png)
+
+### PWABuilder Score
+Avaliação da conformidade do Manifesto e Service Worker para publicação em lojas (Google Play/App Store).
+![Resultado PWABuilder](caminho-da-sua-imagem-pwabuilder.png)
+
+---
+
+## 📂 Estrutura do Projeto
+
+Entenda a função de cada arquivo neste repositório:
+
+| Arquivo | Descrição |
+| :--- | :--- |
+| `index.html` | Estrutura principal e ponto de montagem do DOM. |
+| `style.css` | Estilização utilizando variáveis, Grid e Flexbox. |
+| `script.js` | Lógica de consumo da API ViaCEP, Geolocalização, Share e Vibração. |
+| `manifest.json` | Metadados do PWA (ícones, cores de tema e modo de exibição). |
+| `sw.js` | Service Worker responsável pelo cache e funcionamento offline. |
+| `icon-192.png / icon-512.png` | Ícones do aplicativo em diferentes resoluções. |
+| `screenshot-desktop.png / screenshot-mobile.png` | Capturas de tela para a vitrine de instalação do PWA. |
+
+---
+
+## 🛠️ Tecnologias & APIs
+
+* **Linguagens:** HTML5, CSS3, JavaScript (ES6+).
+* **Consumo de Dados:** [ViaCEP API](https://viacep.com.br/) e [Nominatim API](https://nominatim.org/).
+* **Hardware & Web APIs:** Geolocation API, Vibration API, Web Share API e Service Workers.
+* **Hospedagem:** Vercel.
+
+---
+
+## 🧑‍💻 Autor
+
+Desenvolvido por **Angelo**, Técnico em Redes de Computadores e estudante de Análise e Desenvolvimento de Sistemas (ADS) na **FacSenac-PE**. Residente no programa **Embarque Digital** (Porto Digital).
 
 ---
 
 ## 📦 Como rodar o projeto localmente
 
-1. **Clone o repositório:**
+1. Clone o repositório:
    ```bash
    git clone [https://github.com/Angelo-msDev/app-apiCEP.git](https://github.com/Angelo-msDev/app-apiCEP.git)
